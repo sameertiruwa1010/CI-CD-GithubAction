@@ -16,7 +16,7 @@ function App() {
       {/* Navigation */}
       <nav className="navbar">
         <div className="nav-container">
-          <h1 className="logo">🛒 SameerkoPasal</h1>
+          <h1 className="logo">🛒 SameerkoPasall</h1>
           <div className="nav-links">
             <a href="#home">Home</a>
             <a href="#products">Products</a>
