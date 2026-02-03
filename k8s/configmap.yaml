@@ -1,9 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-   name: app-config
+  name: ecomsite-config
+  namespace: ecomsite
 data:
-   APP_ENV: dev
-   APP_PORT: "8080"
-   DB_HOST: locahost
-   DB_USER: niba
+  NODE_ENV: "production"
+  WELCOME_MSG: "Welcome to SameerKOPasal E-Commerce"
