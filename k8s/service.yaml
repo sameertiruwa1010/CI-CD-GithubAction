@@ -4,9 +4,10 @@ metadata:
   name: node-app-svc
   namespace: ecomsite
 spec:
-  type: ClusterIP       # internal only
+  type: NodePort               # <-- changed from ClusterIP
   selector:
     app: node-app
   ports:
     - port: 80
       targetPort: 3000
+      nodePort: 30080         # <-- expose this port externally
