@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: node-app
+  labels: 
+    environment: dev
+    clusterniba: k3d-cluster
+  annotations:
+    manager: niba
+    env: dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      imagePullSecrets:
+        - name: dockerhub-secret
+      containers:
+      - name: node-app
+        image: sameertiruwa1010/node-appss:6353659
+        ports:
+          - containerPort: 3000
+        env:
+        - name: APP_ENV
+          valueFrom: 
+            configMapKeyRef:
+              name: app-config
+              key: APP_ENV
+        - name: APP_PORT
+          valueFrom: 
+            configMapKeyRef:
+              name: app-config
+              key: APP_PORT
+        - name: DB_HOST
+          valueFrom: 
+            configMapKeyRef:
+              name: app-config
+              key: DB_HOST
+        - name: DB_USER
+          valueFrom: 
+            configMapKeyRef:
+              name: app-config
+              key: DB_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+               name: mysql-pass
+               key: password
+        - name: hello-key-test
+          value: niba-key

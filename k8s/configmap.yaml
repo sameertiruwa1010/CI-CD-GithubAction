@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+   name: app-config
+data:
+   APP_ENV: dev
+   APP_PORT: "8080"
+   DB_HOST: locahost
+   DB_USER: niba
